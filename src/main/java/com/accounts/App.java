@@ -9,6 +9,10 @@ import java.awt.BorderLayout;
 
 public class App extends JFrame {
 
+    private JPanel buttonPanel;
+    private JButton addCarriageButton;
+    private JButton listCarriagesButton;
+
     public App() {
         setTitle("Управление поездами");
 
@@ -16,11 +20,11 @@ public class App extends JFrame {
 
         setSize(400, 300);
 
-        JPanel buttonPanel = new JPanel();
+        buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        JButton addCarriageButton = new JButton("Добавить вагон");
-        JButton listCarriagesButton = new JButton("Список вагонов");
+        addCarriageButton = new JButton("Добавить вагон");
+        listCarriagesButton = new JButton("Список вагонов");
 
         buttonPanel.add(addCarriageButton);
         buttonPanel.add(listCarriagesButton);
@@ -31,7 +35,6 @@ public class App extends JFrame {
     }
 
     public static void main(String[] args) {
-        // Вызов конструктора для создания и отображения окна
         new App();
     }
 }
