@@ -2,13 +2,9 @@ package com.accounts;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-// import java.awt.Color;
+// вынести панель кнопок в отдельный компонент JPanel
 
 import javax.swing.JButton;
-
-// import java.awt.FlowLayout;
-// import java.awt.BorderLayout;
 
 public class App extends JFrame {
 
@@ -30,11 +26,11 @@ public class App extends JFrame {
         buttonPanel.setLayout(null);
         buttonPanel.setBounds(0, 0, 400, 100);
 
-        addCarriageButton = new JButton("Добавить вагон");
-        addCarriageButton.setBounds(0, 0, 100, 30);
+        addCarriageButton = new JButton("Добавить");
+        addCarriageButton.setBounds(0, 0, 110, 25);
 
-        listCarriagesButton = new JButton("Список вагонов");
-        listCarriagesButton.setBounds(85, 0, 100, 30);
+        listCarriagesButton = new JButton("Список");
+        listCarriagesButton.setBounds(115, 0, 110, 25);
 
         buttonPanel.add(addCarriageButton);
         buttonPanel.add(listCarriagesButton);
