@@ -12,7 +12,7 @@ public class AddPanel extends JPanel {
         setSize(400, 250);
 
         TitleLable = new JLabel("Добавить вагон");
-        TitleLable.setBounds(50, 5, 400, 50);
+        TitleLable.setBounds(150, 0, 400, 50);
         add(TitleLable);
     }
 }
