@@ -4,11 +4,13 @@ import javax.swing.JFrame;
 
 import com.accounts.panels.AddPanel;
 import com.accounts.panels.HeadMenu;
+import com.accounts.panels.ListPanel;
 
 public class App extends JFrame {
 
     private HeadMenu buttonPanel;
     private AddPanel addPanel;
+    private ListPanel listPanel;
 
     public App() {
 
@@ -19,12 +21,15 @@ public class App extends JFrame {
 
         buttonPanel = new HeadMenu();
         addPanel = new AddPanel();
+        listPanel = new ListPanel();
 
         buttonPanel.setBounds(0, 0, 400, 20);
-        addPanel.setBounds(0, 20, 400, 250);
+        addPanel.setBounds(0, 20, 400, 280);
+        listPanel.setBounds(0, 20, 400, 280);
 
         add(buttonPanel);
-        add(addPanel);
+        // add(addPanel);
+        add(listPanel);
         
         setVisible(true);
     }
