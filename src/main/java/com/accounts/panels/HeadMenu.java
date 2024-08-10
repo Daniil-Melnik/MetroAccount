@@ -3,6 +3,8 @@ package com.accounts.panels;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import java.awt.event.ActionListener;
+
 public class HeadMenu extends JPanel {
 
     private JButton addCarriageButton;
@@ -22,5 +24,13 @@ public class HeadMenu extends JPanel {
         add(addCarriageButton);
         add(listCarriagesButton);
 
+    }
+
+    public void addCarriageButtonListener(ActionListener listener) {
+        addCarriageButton.addActionListener(listener);
+    }
+
+    public void listCarriagesButtonListener(ActionListener listener) {
+        listCarriagesButton.addActionListener(listener);
     }
 }

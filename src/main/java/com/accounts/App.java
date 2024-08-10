@@ -28,8 +28,7 @@ public class App extends JFrame {
         listPanel.setBounds(0, 20, 400, 280);
 
         add(buttonPanel);
-        // add(addPanel);
-        add(listPanel);
+        add(addPanel);
         
         setVisible(true);
     }
