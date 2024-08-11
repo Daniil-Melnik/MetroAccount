@@ -26,8 +26,8 @@ public class HeadMenu extends JPanel {
 
     }
 
-    public void addCarriageButtonListener(ActionListener listener) {
-        addCarriageButton.addActionListener(listener);
+    public void addCarriageButtonListener(ActionListener actionListener) {
+        addCarriageButton.addActionListener(actionListener);
     }
 
     public void listCarriagesButtonListener(ActionListener listener) {

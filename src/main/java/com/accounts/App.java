@@ -6,6 +6,9 @@ import com.accounts.panels.AddPanel;
 import com.accounts.panels.HeadMenu;
 import com.accounts.panels.ListPanel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class App extends JFrame {
 
     private HeadMenu buttonPanel;
@@ -26,6 +29,24 @@ public class App extends JFrame {
         buttonPanel.setBounds(0, 0, 400, 20);
         addPanel.setBounds(0, 20, 400, 280);
         listPanel.setBounds(0, 20, 400, 280);
+
+        buttonPanel.addCarriageButtonListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                remove(listPanel);
+                add(addPanel);
+                repaint();                
+            }
+        });
+
+        buttonPanel.listCarriagesButtonListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                remove(addPanel);
+                add(listPanel);
+                repaint();                
+            }
+        });
 
         add(buttonPanel);
         add(addPanel);
