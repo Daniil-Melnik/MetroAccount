@@ -5,14 +5,16 @@ import javax.swing.JPanel;
 
 public class AddPanel extends JPanel {
 
-    private JLabel TitleLable;
+    private JLabel titleLable;
 
-    public AddPanel(){
+    public AddPanel() {
         setLayout(null);
-        setSize(400, 250);
+        setSize(400, 280);
 
-        TitleLable = new JLabel("Добавить вагон");
-        TitleLable.setBounds(150, 0, 400, 50);
-        add(TitleLable);
+        titleLable = new JLabel("Добавить вагон");
+
+        titleLable.setBounds(150, 0, 100, 20);
+
+        add(titleLable);
     }
 }
