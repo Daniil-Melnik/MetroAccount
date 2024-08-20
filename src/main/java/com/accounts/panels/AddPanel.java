@@ -3,11 +3,13 @@ package com.accounts.panels;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.jdesktop.swingx.JXDatePicker;
 
+import com.accounts.Enums.CarriagesModels;
 import com.accounts.components.TimePicker;
 
 public class AddPanel extends JPanel {
@@ -17,6 +19,7 @@ public class AddPanel extends JPanel {
     private TimePicker timePicker;
     private JLabel dateLabel;
     private JLabel timeLabel;
+    private JComboBox carriadgeType;
 
     public AddPanel() {
         setLayout(null);
@@ -28,6 +31,8 @@ public class AddPanel extends JPanel {
 
         timePicker = new TimePicker();
 
+        carriadgeType = new JComboBox<>(CarriagesModels.values());
+
         titleLable = new JLabel("Добавить вагон");
         dateLabel = new JLabel("Дата поездки:");
         timeLabel = new JLabel("Время поездки:");
@@ -37,11 +42,13 @@ public class AddPanel extends JPanel {
         timePicker.setBounds(120, 60, 250, 30);
         dateLabel.setBounds(20, 30, 100, 25);
         timeLabel.setBounds(20, 60, 100, 25);
+        carriadgeType.setBounds(20, 90, 200, 25);
 
         add(titleLable);
         add(datePicker);
         add(timePicker);
         add(dateLabel);
         add(timeLabel);
+        add(carriadgeType);
     }
 }
