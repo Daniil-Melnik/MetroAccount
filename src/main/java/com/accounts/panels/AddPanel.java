@@ -6,6 +6,7 @@ import java.util.Calendar;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import org.jdesktop.swingx.JXDatePicker;
 
@@ -20,6 +21,9 @@ public class AddPanel extends JPanel {
     private JLabel dateLabel;
     private JLabel timeLabel;
     private JComboBox carriadgeType;
+    private JLabel typeLabel;
+    private JTextField numberCarriadge;
+    private JLabel numberLabel;
 
     public AddPanel() {
         setLayout(null);
@@ -33,16 +37,23 @@ public class AddPanel extends JPanel {
 
         carriadgeType = new JComboBox<>(CarriagesModels.values());
 
+        numberCarriadge = new JTextField();
+
         titleLable = new JLabel("Добавить вагон");
         dateLabel = new JLabel("Дата поездки:");
         timeLabel = new JLabel("Время поездки:");
+        typeLabel = new JLabel("Модель:");
+        numberLabel = new JLabel("№ вагона:");
 
         titleLable.setBounds(150, 0, 100, 20);
-        datePicker.setBounds(120, 30, 120, 25);
-        timePicker.setBounds(120, 60, 250, 30);
-        dateLabel.setBounds(20, 30, 100, 25);
-        timeLabel.setBounds(20, 60, 100, 25);
-        carriadgeType.setBounds(20, 90, 200, 25);
+        datePicker.setBounds(120, 60, 120, 25);
+        timePicker.setBounds(120, 90, 250, 30);
+        dateLabel.setBounds(20, 60, 100, 25);
+        timeLabel.setBounds(20, 90, 100, 25);
+        carriadgeType.setBounds(120, 120, 200, 25);
+        typeLabel.setBounds(20, 120, 50, 25);
+        numberLabel.setBounds(20, 30, 60, 25);
+        numberCarriadge.setBounds(120, 30, 100, 25);
 
         add(titleLable);
         add(datePicker);
@@ -50,5 +61,8 @@ public class AddPanel extends JPanel {
         add(dateLabel);
         add(timeLabel);
         add(carriadgeType);
+        add(typeLabel);
+        add(numberCarriadge);
+        add(numberLabel);
     }
 }
