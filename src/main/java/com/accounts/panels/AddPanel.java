@@ -82,7 +82,8 @@ public class AddPanel extends JPanel {
 
         submit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                System.out.println(carriadgeType.getSelectedIndex());
+                CarriagesModels cm = (CarriagesModels) carriadgeType.getSelectedItem();
+                System.out.println(cm.name());
             }
         });
     }

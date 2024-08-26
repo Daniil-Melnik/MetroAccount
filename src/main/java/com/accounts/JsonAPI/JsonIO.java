@@ -20,4 +20,8 @@ public class JsonIO {
 
         return employeeList;
     }
+
+    public static void writeJsonSingle() {
+
+    }
 }
