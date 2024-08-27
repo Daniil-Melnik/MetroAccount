@@ -20,14 +20,14 @@ public class App extends JFrame {
         setLayout(null);
         setTitle("Управление поездами");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(480, 300);
 
         buttonPanel = new HeadMenu();
         addPanel = new AddPanel();
         listPanel = new ListPanel();
 
         buttonPanel.setBounds(0, 0, 400, 20);
-        addPanel.setBounds(0, 20, 400, 280);
+        addPanel.setBounds(0, 20, 480, 280);
         listPanel.setBounds(0, 20, 400, 280);
 
         buttonPanel.addCarriageButtonListener(new ActionListener() {
@@ -35,7 +35,7 @@ public class App extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 remove(listPanel);
                 add(addPanel);
-                repaint();                
+                repaint();
             }
         });
 
@@ -44,13 +44,13 @@ public class App extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 remove(addPanel);
                 add(listPanel);
-                repaint();                
+                repaint();
             }
         });
 
         add(buttonPanel);
         add(addPanel);
-        
+
         setVisible(true);
     }
 
@@ -58,4 +58,3 @@ public class App extends JFrame {
         new App();
     }
 }
-

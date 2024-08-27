@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXDatePicker;
 
 import com.accounts.Enums.CarriagesModels;
+import com.accounts.Enums.LinesTitles;
 import com.accounts.components.TimePicker;
 
 import java.awt.event.ActionListener;
@@ -26,7 +27,9 @@ public class AddPanel extends JPanel {
     private TimePicker timePicker;
     private JLabel dateLabel;
     private JLabel timeLabel;
+    private JLabel lineTieleLabel;
     private JComboBox carriadgeType;
+    private JComboBox lineTitle;
     private JLabel typeLabel;
     private JTextField numberCarriadge;
     private JLabel numberLabel;
@@ -45,6 +48,7 @@ public class AddPanel extends JPanel {
         timePicker = new TimePicker();
 
         carriadgeType = new JComboBox<>(CarriagesModels.values());
+        lineTitle = new JComboBox<>(LinesTitles.values());
 
         numberCarriadge = new JTextField();
 
@@ -57,8 +61,9 @@ public class AddPanel extends JPanel {
         timeLabel = new JLabel("Время поездки:");
         typeLabel = new JLabel("Модель:");
         numberLabel = new JLabel("№ вагона:");
+        lineTieleLabel = new JLabel("Линия:");
 
-        titleLable.setBounds(120, 5, 150, 20);
+        titleLable.setBounds(170, 5, 150, 20);
         datePicker.setBounds(120, 60, 120, 25);
         timePicker.setBounds(120, 90, 250, 30);
         dateLabel.setBounds(20, 60, 100, 25);
@@ -67,7 +72,9 @@ public class AddPanel extends JPanel {
         typeLabel.setBounds(20, 120, 50, 25);
         numberLabel.setBounds(20, 30, 60, 25);
         numberCarriadge.setBounds(120, 30, 100, 25);
-        submit.setBounds(0, 150, 390, 30);
+        lineTitle.setBounds(120, 150, 200, 25);
+        lineTieleLabel.setBounds(20, 150, 60, 25);
+        submit.setBounds(0, 180, 480, 30);
 
         add(titleLable);
         add(datePicker);
@@ -78,6 +85,8 @@ public class AddPanel extends JPanel {
         add(typeLabel);
         add(numberCarriadge);
         add(numberLabel);
+        add(lineTitle);
+        add(lineTieleLabel);
         add(submit);
 
         submit.addActionListener(new ActionListener() {
