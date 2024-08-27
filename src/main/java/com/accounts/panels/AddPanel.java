@@ -37,7 +37,7 @@ public class AddPanel extends JPanel {
 
     public AddPanel() {
         setLayout(null);
-        setSize(400, 280);
+        setSize(400, 260);
 
         Font font15 = new Font("Arial", Font.BOLD, 15);
 
@@ -74,7 +74,7 @@ public class AddPanel extends JPanel {
         numberCarriadge.setBounds(120, 30, 100, 25);
         lineTitle.setBounds(120, 150, 200, 25);
         lineTieleLabel.setBounds(20, 150, 60, 25);
-        submit.setBounds(0, 180, 480, 30);
+        submit.setBounds(0, 190, 480, 35);
 
         add(titleLable);
         add(datePicker);
@@ -91,8 +91,12 @@ public class AddPanel extends JPanel {
 
         submit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                CarriagesModels cm = (CarriagesModels) carriadgeType.getSelectedItem();
-                System.out.println(cm.name());
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                CarriagesModels ct = (CarriagesModels) carriadgeType.getSelectedItem();
+                LinesTitles lt = (LinesTitles) lineTitle.getSelectedItem();
+
+                System.out.println(ct.name().toString() + " -- " + lt.name().toString() + " -- "
+                        + df.format(datePicker.getDate()) + " -- " + timePicker.getSelectedTime());
             }
         });
     }

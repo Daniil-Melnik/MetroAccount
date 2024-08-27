@@ -51,4 +51,8 @@ public class TimePicker extends JPanel {
         add(hourLabel);
         add(minutLabel);
     }
+
+    public String getSelectedTime() {
+        return hourCombobox.getSelectedItem().toString() + ":" + minuteCombobox.getSelectedItem().toString();
+    }
 }
