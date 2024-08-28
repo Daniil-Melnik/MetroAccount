@@ -35,6 +35,26 @@ public class Vagon {
         time = newTime;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getLine() {
+        return line;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
     public void printVagonInfo() {
         System.out.println(number + " -- " + type + " -- " + line + " -- " + date + " -- " + time);
     }

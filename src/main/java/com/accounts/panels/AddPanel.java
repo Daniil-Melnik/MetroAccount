@@ -13,6 +13,7 @@ import org.jdesktop.swingx.JXDatePicker;
 
 import com.accounts.Enums.CarriagesModels;
 import com.accounts.Enums.LinesTitles;
+import com.accounts.JsonAPI.JsonIO;
 import com.accounts.JsonAPI.Vagon;
 import com.accounts.components.TimePicker;
 
@@ -111,7 +112,13 @@ public class AddPanel extends JPanel {
 
                 Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime);
 
-                addVagon.printVagonInfo();
+                // addVagon.printVagonInfo();
+
+                try {
+                    JsonIO.writeJsonSingle(addVagon);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

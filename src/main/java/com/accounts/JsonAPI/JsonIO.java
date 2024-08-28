@@ -1,6 +1,8 @@
 package com.accounts.JsonAPI;
 
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,7 +15,7 @@ public class JsonIO {
         System.out.println(jsonObject);
     }
 
-    public static Object readJsonArray(String filename) throws Exception {
+    public static JSONArray readJsonArray(String filename) throws Exception {
         FileReader reader = new FileReader(filename);
         JSONParser jsonParser = new JSONParser();
         Object obj = jsonParser.parse(reader);
@@ -22,7 +24,28 @@ public class JsonIO {
         return employeeList;
     }
 
-    public static void writeJsonSingle() {
+    @SuppressWarnings("unchecked")
+    public static void writeJsonSingle(Vagon addVagon) throws Exception {
+
+        JSONObject addVagonObj = new JSONObject();
+        addVagonObj.put("number", addVagon.getNumber());
+        addVagonObj.put("type", addVagon.getType());
+        addVagonObj.put("line", addVagon.getLine());
+        addVagonObj.put("date", addVagon.getDate());
+        addVagonObj.put("time", addVagon.getTime());
+
+        JSONArray employeeList = readJsonArray(
+                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\vagons3.json");
+        employeeList.add(addVagonObj);
+
+        try (FileWriter file = new FileWriter(
+                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\vagons3.json")) {
+            file.write(employeeList.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
