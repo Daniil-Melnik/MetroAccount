@@ -34,4 +34,8 @@ public class Vagon {
     public void setTime(String newTime) {
         time = newTime;
     }
+
+    public void printVagonInfo() {
+        System.out.println(number + " -- " + type + " -- " + line + " -- " + date + " -- " + time);
+    }
 }

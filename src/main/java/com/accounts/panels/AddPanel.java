@@ -13,6 +13,7 @@ import org.jdesktop.swingx.JXDatePicker;
 
 import com.accounts.Enums.CarriagesModels;
 import com.accounts.Enums.LinesTitles;
+import com.accounts.JsonAPI.Vagon;
 import com.accounts.components.TimePicker;
 
 import java.awt.event.ActionListener;
@@ -91,13 +92,26 @@ public class AddPanel extends JPanel {
 
         submit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                int addNumber;
+                String addType;
+                String addLine;
+                String addDate;
+                String addTime;
+
                 CarriagesModels ct = (CarriagesModels) carriadgeType.getSelectedItem();
                 LinesTitles lt = (LinesTitles) lineTitle.getSelectedItem();
 
-                System.out.println(numberCarriadge.getText() + " -- " + ct.name().toString() + " -- "
-                        + lt.name().toString() + " -- "
-                        + df.format(datePicker.getDate()) + " -- " + timePicker.getSelectedTime());
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+                addNumber = Integer.parseInt(numberCarriadge.getText());
+                addType = ct.name().toString();
+                addLine = lt.name().toString();
+                addDate = df.format(datePicker.getDate());
+                addTime = timePicker.getSelectedTime();
+
+                Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime);
+
+                addVagon.printVagonInfo();
             }
         });
     }
