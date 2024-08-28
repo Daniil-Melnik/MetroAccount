@@ -95,7 +95,8 @@ public class AddPanel extends JPanel {
                 CarriagesModels ct = (CarriagesModels) carriadgeType.getSelectedItem();
                 LinesTitles lt = (LinesTitles) lineTitle.getSelectedItem();
 
-                System.out.println(ct.name().toString() + " -- " + lt.name().toString() + " -- "
+                System.out.println(numberCarriadge.getText() + " -- " + ct.name().toString() + " -- "
+                        + lt.name().toString() + " -- "
                         + df.format(datePicker.getDate()) + " -- " + timePicker.getSelectedTime());
             }
         });
