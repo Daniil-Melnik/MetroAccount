@@ -30,8 +30,8 @@ public class AddPanel extends JPanel {
     private JLabel dateLabel;
     private JLabel timeLabel;
     private JLabel lineTieleLabel;
-    private JComboBox carriadgeType;
-    private JComboBox lineTitle;
+    private JComboBox<CarriagesModels> carriadgeType;
+    private JComboBox<LinesTitles> lineTitle;
     private JLabel typeLabel;
     private JTextField numberCarriadge;
     private JLabel numberLabel;
