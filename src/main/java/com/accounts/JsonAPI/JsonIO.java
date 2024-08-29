@@ -21,6 +21,8 @@ public class JsonIO {
         Object obj = jsonParser.parse(reader);
         JSONArray employeeList = (JSONArray) obj;
 
+        System.out.println(employeeList.get(0));
+        System.out.println(employeeList.get(1));
         return employeeList;
     }
 
