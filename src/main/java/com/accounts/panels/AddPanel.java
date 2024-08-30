@@ -121,8 +121,9 @@ public class AddPanel extends JPanel {
                 addLine = lt.name().toString();
                 addDate = df.format(datePicker.getDate());
                 addTime = timePicker.getSelectedTime();
+                addFactory = ft.name().toString();
 
-                Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime, );
+                Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime, addFactory);
 
                 // addVagon.printVagonInfo();
 

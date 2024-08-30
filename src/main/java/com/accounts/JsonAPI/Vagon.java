@@ -66,6 +66,6 @@ public class Vagon {
     }
 
     public void printVagonInfo() {
-        System.out.println(number + " -- " + type + " -- " + line + " -- " + date + " -- " + time);
+        System.out.println(number + " -- " + type + " -- " + line + " -- " + date + " -- " + time + " -- " + factory);
     }
 }

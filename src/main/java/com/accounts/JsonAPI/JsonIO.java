@@ -63,7 +63,7 @@ public class JsonIO {
         numberTimeList.add(addObj);
 
         try (FileWriter file = new FileWriter(
-                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\vagons3.json")) {
+                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\numtime.json")) {
             file.write(numberTimeList.toJSONString());
             file.flush();
 
