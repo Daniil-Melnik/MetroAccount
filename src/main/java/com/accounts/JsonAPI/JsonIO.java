@@ -51,4 +51,8 @@ public class JsonIO {
 
     }
 
+    public static void writeJsonSingle(VagonTime addVagonTime) {
+
+    }
+
 }

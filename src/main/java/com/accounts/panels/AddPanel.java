@@ -108,9 +108,11 @@ public class AddPanel extends JPanel {
                 String addLine;
                 String addDate;
                 String addTime;
+                String addFactory;
 
                 CarriagesModels ct = (CarriagesModels) carriadgeType.getSelectedItem();
                 LinesTitles lt = (LinesTitles) lineTitle.getSelectedItem();
+                Factories ft = (Factories) factoryTitle.getSelectedItem();
 
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -120,7 +122,7 @@ public class AddPanel extends JPanel {
                 addDate = df.format(datePicker.getDate());
                 addTime = timePicker.getSelectedTime();
 
-                Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime, "");
+                Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime, );
 
                 // addVagon.printVagonInfo();
 
