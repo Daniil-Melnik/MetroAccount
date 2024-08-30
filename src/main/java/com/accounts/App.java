@@ -20,15 +20,15 @@ public class App extends JFrame {
         setLayout(null);
         setTitle("Управление поездами");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(480, 290);
+        setSize(480, 320);
 
         buttonPanel = new HeadMenu();
         addPanel = new AddPanel();
         listPanel = new ListPanel();
 
         buttonPanel.setBounds(0, 5, 400, 20);
-        addPanel.setBounds(0, 25, 480, 260);
-        listPanel.setBounds(0, 25, 400, 260);
+        addPanel.setBounds(0, 25, 480, 320);
+        listPanel.setBounds(0, 25, 400, 320);
 
         buttonPanel.addCarriageButtonListener(new ActionListener() {
             @Override

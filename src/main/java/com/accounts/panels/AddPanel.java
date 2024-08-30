@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXDatePicker;
 
 import com.accounts.Enums.CarriagesModels;
+import com.accounts.Enums.Factories;
 import com.accounts.Enums.LinesTitles;
 import com.accounts.JsonAPI.JsonIO;
 import com.accounts.JsonAPI.Vagon;
@@ -32,14 +33,16 @@ public class AddPanel extends JPanel {
     private JLabel lineTieleLabel;
     private JComboBox<CarriagesModels> carriadgeType;
     private JComboBox<LinesTitles> lineTitle;
+    private JComboBox<Factories> factoryTitle;
     private JLabel typeLabel;
     private JTextField numberCarriadge;
     private JLabel numberLabel;
+    private JLabel factoryTiteleLabel;
     private JButton submit;
 
     public AddPanel() {
         setLayout(null);
-        setSize(400, 260);
+        setSize(400, 320);
 
         Font font15 = new Font("Arial", Font.BOLD, 15);
 
@@ -51,6 +54,7 @@ public class AddPanel extends JPanel {
 
         carriadgeType = new JComboBox<>(CarriagesModels.values());
         lineTitle = new JComboBox<>(LinesTitles.values());
+        factoryTitle = new JComboBox<>(Factories.values());
 
         numberCarriadge = new JTextField();
 
@@ -64,6 +68,7 @@ public class AddPanel extends JPanel {
         typeLabel = new JLabel("Модель:");
         numberLabel = new JLabel("№ вагона:");
         lineTieleLabel = new JLabel("Линия:");
+        factoryTiteleLabel = new JLabel("Изготовитель:");
 
         titleLable.setBounds(170, 5, 150, 20);
         datePicker.setBounds(120, 60, 120, 25);
@@ -75,8 +80,11 @@ public class AddPanel extends JPanel {
         numberLabel.setBounds(20, 30, 60, 25);
         numberCarriadge.setBounds(120, 30, 100, 25);
         lineTitle.setBounds(120, 150, 200, 25);
+        factoryTitle.setBounds(120, 180, 200, 25);
         lineTieleLabel.setBounds(20, 150, 60, 25);
-        submit.setBounds(0, 190, 480, 35);
+        factoryTiteleLabel.setBounds(20, 180, 60, 25);
+
+        submit.setBounds(0, 220, 480, 35);
 
         add(titleLable);
         add(datePicker);
@@ -89,6 +97,8 @@ public class AddPanel extends JPanel {
         add(numberLabel);
         add(lineTitle);
         add(lineTieleLabel);
+        add(factoryTitle);
+        add(factoryTiteleLabel);
         add(submit);
 
         submit.addActionListener(new ActionListener() {
@@ -110,7 +120,7 @@ public class AddPanel extends JPanel {
                 addDate = df.format(datePicker.getDate());
                 addTime = timePicker.getSelectedTime();
 
-                Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime);
+                Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime, "");
 
                 // addVagon.printVagonInfo();
 
