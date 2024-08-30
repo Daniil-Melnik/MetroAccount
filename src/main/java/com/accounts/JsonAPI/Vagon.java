@@ -6,13 +6,15 @@ public class Vagon {
     private String line;
     private String date;
     private String time;
+    private String factory;
 
-    public Vagon(int number, String type, String line, String date, String time) {
+    public Vagon(int number, String type, String line, String date, String time, String factory) {
         this.number = number;
         this.type = type;
         this.line = line;
         this.date = date;
         this.time = time;
+        this.factory = factory;
     }
 
     public void setNumber(int newNumber) {
@@ -35,6 +37,10 @@ public class Vagon {
         time = newTime;
     }
 
+    public void setFactory(String newFactory) {
+        factory = newFactory;
+    }
+
     public int getNumber() {
         return number;
     }
@@ -53,6 +59,10 @@ public class Vagon {
 
     public String getTime() {
         return time;
+    }
+
+    public String getFactory() {
+        return factory;
     }
 
     public void printVagonInfo() {
