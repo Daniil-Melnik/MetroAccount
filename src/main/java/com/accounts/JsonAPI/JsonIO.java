@@ -51,8 +51,25 @@ public class JsonIO {
 
     }
 
-    public static void writeJsonSingle(VagonTime addVagonTime) {
+    @SuppressWarnings("unchecked")
+    public static void writeJsonSingle(VagonTime addVagonTime) throws Exception {
+        JSONArray numberTimeList = readJsonArray(
+                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\numtime.json");
 
+        JSONObject addObj = new JSONObject();
+        addObj.put("number", addVagonTime.getNumber());
+        addObj.put("time", addVagonTime.getTime());
+
+        numberTimeList.add(addObj);
+
+        try (FileWriter file = new FileWriter(
+                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\vagons3.json")) {
+            file.write(numberTimeList.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
