@@ -2,7 +2,8 @@ package com.accounts.Enums;
 
 public enum CarriagesModels {
     BALTIETS("«Балтиец» 81-725/726/727"),
-    EM("«Ем»"),
+    EM501("Ем-501"),
+    EM502("Емa-502"),
     NEVA("«НеВа» 81-556/557/558 "),
     NOMERNOY1_H("«Номерной» 81-717"),
     NOMERNOY1_I("«Номерной» 81-714"),

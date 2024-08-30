@@ -82,7 +82,7 @@ public class AddPanel extends JPanel {
         lineTitle.setBounds(120, 150, 200, 25);
         factoryTitle.setBounds(120, 180, 200, 25);
         lineTieleLabel.setBounds(20, 150, 60, 25);
-        factoryTiteleLabel.setBounds(20, 180, 60, 25);
+        factoryTiteleLabel.setBounds(20, 180, 100, 25);
 
         submit.setBounds(0, 220, 480, 35);
 
