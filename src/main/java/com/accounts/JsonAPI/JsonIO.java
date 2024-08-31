@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
 public class JsonIO {
     public static void main(String[] args) throws Exception {
         JSONArray jsonObject = (JSONArray) readJsonArray(
-                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\vagons.json");
+                "src/json/vagons.json");
         System.out.println(jsonObject);
     }
 
@@ -21,8 +21,8 @@ public class JsonIO {
         Object obj = jsonParser.parse(reader);
         JSONArray employeeList = (JSONArray) obj;
 
-        System.out.println(employeeList.get(0));
-        System.out.println(employeeList.get(1));
+        // System.out.println(employeeList.get(0));
+        // System.out.println(employeeList.get(1));
         return employeeList;
     }
 
@@ -37,11 +37,11 @@ public class JsonIO {
         addVagonObj.put("time", addVagon.getTime());
 
         JSONArray employeeList = readJsonArray(
-                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\vagons3.json");
+                "src/json/vagons3.json");
         employeeList.add(addVagonObj);
 
         try (FileWriter file = new FileWriter(
-                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\vagons3.json")) {
+                "src/json/vagons3.json")) {
             file.write(employeeList.toJSONString());
             file.flush();
 
@@ -54,7 +54,7 @@ public class JsonIO {
     @SuppressWarnings("unchecked")
     public static void writeJsonSingle(VagonTime addVagonTime) throws Exception {
         JSONArray numberTimeList = readJsonArray(
-                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\numtime.json");
+                "src/json/numtime.json");
 
         JSONObject addObj = new JSONObject();
         addObj.put("number", addVagonTime.getNumber());
@@ -63,7 +63,7 @@ public class JsonIO {
         numberTimeList.add(addObj);
 
         try (FileWriter file = new FileWriter(
-                "C:\\Users\\dmelnik\\Desktop\\вм\\MetroAccount\\src\\json\\numtime.json")) {
+                "src/json/numtime.json")) {
             file.write(numberTimeList.toJSONString());
             file.flush();
 
