@@ -35,6 +35,8 @@ public class JsonIO {
         addVagonObj.put("line", addVagon.getLine());
         addVagonObj.put("date", addVagon.getDate());
         addVagonObj.put("time", addVagon.getTime());
+        addVagonObj.put("factory", addVagon.getFactory());
+        addVagonObj.put("productDate", addVagon.getProductDate());
 
         JSONArray employeeList = readJsonArray(
                 "src/json/vagons3.json");
