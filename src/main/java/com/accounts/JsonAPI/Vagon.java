@@ -7,14 +7,16 @@ public class Vagon {
     private String date;
     private String time;
     private String factory;
+    private String productDate;
 
-    public Vagon(int number, String type, String line, String date, String time, String factory) {
+    public Vagon(int number, String type, String line, String date, String time, String factory, String productDate) {
         this.number = number;
         this.type = type;
         this.line = line;
         this.date = date;
         this.time = time;
         this.factory = factory;
+        this.productDate = productDate;
     }
 
     public void setNumber(int newNumber) {
@@ -65,7 +67,12 @@ public class Vagon {
         return factory;
     }
 
+    public String getProductDate() {
+        return productDate;
+    }
+
     public void printVagonInfo() {
-        System.out.println(number + " -- " + type + " -- " + line + " -- " + date + " -- " + time + " -- " + factory);
+        System.out.println(number + " -- " + type + " -- " + line + " -- " + date + " -- " + time + " -- " + factory
+                + " -- " + productDate);
     }
 }

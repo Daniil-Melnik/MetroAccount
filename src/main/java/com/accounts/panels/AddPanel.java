@@ -31,18 +31,24 @@ public class AddPanel extends JPanel {
     private JLabel dateLabel;
     private JLabel timeLabel;
     private JLabel lineTieleLabel;
+    private JLabel typeLabel;
+    private JLabel productDateLabel;
     private JComboBox<CarriagesModels> carriadgeType;
     private JComboBox<LinesTitles> lineTitle;
     private JComboBox<Factories> factoryTitle;
-    private JLabel typeLabel;
+    private JComboBox<String> productDate;
     private JTextField numberCarriadge;
     private JLabel numberLabel;
     private JLabel factoryTiteleLabel;
     private JButton submit;
 
+    private String[] dateOptions = new String[55];
+
     public AddPanel() {
         setLayout(null);
         setSize(400, 320);
+
+        makeOptions();
 
         Font font15 = new Font("Arial", Font.BOLD, 15);
 
@@ -55,6 +61,7 @@ public class AddPanel extends JPanel {
         carriadgeType = new JComboBox<>(CarriagesModels.values());
         lineTitle = new JComboBox<>(LinesTitles.values());
         factoryTitle = new JComboBox<>(Factories.values());
+        productDate = new JComboBox<String>(dateOptions);
 
         numberCarriadge = new JTextField();
 
@@ -69,6 +76,7 @@ public class AddPanel extends JPanel {
         numberLabel = new JLabel("№ вагона:");
         lineTieleLabel = new JLabel("Линия:");
         factoryTiteleLabel = new JLabel("Изготовитель:");
+        productDateLabel = new JLabel("год");
 
         titleLable.setBounds(170, 5, 150, 20);
         datePicker.setBounds(120, 60, 120, 25);
@@ -81,8 +89,10 @@ public class AddPanel extends JPanel {
         numberCarriadge.setBounds(120, 30, 100, 25);
         lineTitle.setBounds(120, 150, 200, 25);
         factoryTitle.setBounds(120, 180, 200, 25);
+        productDate.setBounds(325, 180, 60, 25);
         lineTieleLabel.setBounds(20, 150, 60, 25);
         factoryTiteleLabel.setBounds(20, 180, 100, 25);
+        productDateLabel.setBounds(390, 180, 40, 25);
 
         submit.setBounds(0, 220, 480, 35);
 
@@ -99,6 +109,8 @@ public class AddPanel extends JPanel {
         add(lineTieleLabel);
         add(factoryTitle);
         add(factoryTiteleLabel);
+        add(productDate);
+        add(productDateLabel);
         add(submit);
 
         submit.addActionListener(new ActionListener() {
@@ -109,6 +121,7 @@ public class AddPanel extends JPanel {
                 String addDate;
                 String addTime;
                 String addFactory;
+                String addProductDate;
 
                 CarriagesModels ct = (CarriagesModels) carriadgeType.getSelectedItem();
                 LinesTitles lt = (LinesTitles) lineTitle.getSelectedItem();
@@ -122,8 +135,9 @@ public class AddPanel extends JPanel {
                 addDate = df.format(datePicker.getDate());
                 addTime = timePicker.getSelectedTime();
                 addFactory = ft.name().toString();
+                addProductDate = productDate.getSelectedItem().toString();
 
-                Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime, addFactory);
+                Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime, addFactory, addProductDate);
 
                 // addVagon.printVagonInfo();
 
@@ -134,5 +148,11 @@ public class AddPanel extends JPanel {
                 }
             }
         });
+    }
+
+    private void makeOptions() {
+        for (int i = 1970; i < 2025; i++) {
+            dateOptions[i - 1970] = Integer.toString(i);
+        }
     }
 }
