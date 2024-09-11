@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import com.accounts.FileAPI.FileManager;
 
@@ -17,21 +18,25 @@ public class JsonIO {
         System.out.println(jsonObject);
     }
 
-    public static JSONArray readJsonArray(int vagonNumber) throws Exception {
-        // FileReader reader = new FileReader(filename);
+    public static JSONArray readJsonArray(int vagonNumber) {
         FileManager fileManager = new FileManager();
-        FileReader reader = fileManager.getMainFile(vagonNumber);
-        JSONParser jsonParser = new JSONParser();
-        Object obj = jsonParser.parse(reader);
-        JSONArray employeeList = (JSONArray) obj;
+        try (FileReader reader = fileManager.getFileReader(vagonNumber, 1)) {
+            JSONParser jsonParser = new JSONParser();
+            Object obj = jsonParser.parse(reader);
+            JSONArray employeeList = (JSONArray) obj;
 
-        // System.out.println(employeeList.get(0));
-        // System.out.println(employeeList.get(1));
-        return employeeList;
+            return employeeList;
+        } catch (IOException | ParseException e) {
+            // что-то в логи
+            System.out.println("Не удалось прочитать файл");
+            return null;
+        }
     }
 
     @SuppressWarnings("unchecked")
     public static void writeJsonSingle(Vagon addVagon) throws Exception {
+
+        FileManager fileManager = new FileManager();
 
         JSONObject addVagonObj = new JSONObject();
         addVagonObj.put("number", addVagon.getNumber());
@@ -46,13 +51,13 @@ public class JsonIO {
                 addVagon.getNumber());
         employeeList.add(addVagonObj);
 
-        try (FileWriter file = new FileWriter(
-                "src/json/vagons3.json")) {
-            file.write(employeeList.toJSONString());
-            file.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        try {
+            FileWriter writer = fileManager.getFileWriter(addVagon.getNumber(), 1);
+            writer.write(employeeList.toJSONString());
+            writer.flush();
+        } catch (Exception e) {
+            // что-то в логи
+            System.out.println("Не удалось записать в файл");
         }
 
     }

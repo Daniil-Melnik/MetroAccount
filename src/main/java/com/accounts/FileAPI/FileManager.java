@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.json.simple.JSONArray;
+
 import com.accounts.Enums.MainEnum;
 
 public class FileManager {
@@ -19,23 +21,57 @@ public class FileManager {
     @SuppressWarnings("resource")
     private void createFile(String fileName) throws IOException {
         File f = new File(fileName);
-        FileWriter writer = new FileWriter(f);
-        writer.write("[]");
-        f.createNewFile();
+        if (!f.exists()) {
+            FileWriter writer = new FileWriter(fileName);
+            JSONArray employeeList = new JSONArray();
+
+            writer.write(employeeList.toJSONString());
+            writer.flush();
+        }
     }
 
-    public FileReader getMainFile(int vagonNumber) throws FileNotFoundException {
+    public FileReader getFileReader(int vagonNumber, int mode) throws FileNotFoundException {
         FileReader file;
         String fileName = makeFileName(vagonNumber);
-        String fullFilename = MainEnum.MAIN_JSON_PATH + fileName;
+        String fullFilename = "";
+
+        switch (mode) {
+            case 1:
+                fullFilename = MainEnum.MAIN_JSON_PATH + fileName;
+                break;
+
+            default:
+                break;
+        }
 
         try {
             createFile(fullFilename);
         } catch (IOException e) {
             // добавить логи
+            System.out.println("Не заполнился файл");
         }
 
         file = new FileReader(fullFilename);
+
+        return file;
+    }
+
+    public FileWriter getFileWriter(int vagonNumber, int mode) throws IOException { // mode перевести в енум (1 - main
+                                                                                    // инфа)
+        FileWriter file;
+        String fileName = makeFileName(vagonNumber);
+        String fullFilename = "";
+
+        switch (mode) {
+            case 1:
+                fullFilename = MainEnum.MAIN_JSON_PATH + fileName;
+                break;
+
+            default:
+                break;
+        }
+
+        file = new FileWriter(fullFilename);
 
         return file;
     }

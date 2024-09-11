@@ -2,7 +2,8 @@ package com.accounts.Enums;
 
 public enum MainEnum {
 
-    MAIN_JSON_PATH("src/json/main_info/");
+    MAIN_JSON_PATH("src/json/main_info/"),
+    VAGON_TIME_JSON_PATH("src/json/time_info/");
 
     private final String description;
 
