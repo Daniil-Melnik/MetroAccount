@@ -1,0 +1,21 @@
+package com.accounts.Enums;
+
+public enum MainEnum {
+
+    MAIN_JSON_PATH("src/json/main_info/");
+
+    private final String description;
+
+    MainEnum(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public String toString() {
+        return description;
+    }
+}
