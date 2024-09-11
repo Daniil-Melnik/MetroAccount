@@ -56,8 +56,7 @@ public class FileManager {
         return file;
     }
 
-    public FileWriter getFileWriter(int vagonNumber, int mode) throws IOException { // mode перевести в енум (1 - main
-                                                                                    // инфа)
+    public FileWriter getFileWriter(int vagonNumber, int mode) throws IOException {
         FileWriter file;
         String fileName = makeFileName(vagonNumber);
         String fullFilename = "";

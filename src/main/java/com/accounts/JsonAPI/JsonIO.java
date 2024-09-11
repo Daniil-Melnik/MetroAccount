@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.accounts.Enums.ModeEnum;
 import com.accounts.FileAPI.FileManager;
 
 public class JsonIO {
@@ -20,7 +21,7 @@ public class JsonIO {
 
     public static JSONArray readJsonArray(int vagonNumber) {
         FileManager fileManager = new FileManager();
-        try (FileReader reader = fileManager.getFileReader(vagonNumber, 1)) {
+        try (FileReader reader = fileManager.getFileReader(vagonNumber, ModeEnum.FILE_IO_MAIN_MODE.toInt())) {
             JSONParser jsonParser = new JSONParser();
             Object obj = jsonParser.parse(reader);
             JSONArray employeeList = (JSONArray) obj;
@@ -52,7 +53,7 @@ public class JsonIO {
         employeeList.add(addVagonObj);
 
         try {
-            FileWriter writer = fileManager.getFileWriter(addVagon.getNumber(), 1);
+            FileWriter writer = fileManager.getFileWriter(addVagon.getNumber(), ModeEnum.FILE_IO_MAIN_MODE.toInt());
             writer.write(employeeList.toJSONString());
             writer.flush();
         } catch (Exception e) {
