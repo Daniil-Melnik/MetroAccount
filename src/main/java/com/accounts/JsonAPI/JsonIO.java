@@ -8,15 +8,19 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.accounts.FileAPI.FileManager;
+
 public class JsonIO {
     public static void main(String[] args) throws Exception {
         JSONArray jsonObject = (JSONArray) readJsonArray(
-                "src/json/vagons.json");
+                6940);
         System.out.println(jsonObject);
     }
 
-    public static JSONArray readJsonArray(String filename) throws Exception {
-        FileReader reader = new FileReader(filename);
+    public static JSONArray readJsonArray(int vagonNumber) throws Exception {
+        // FileReader reader = new FileReader(filename);
+        FileManager fileManager = new FileManager();
+        FileReader reader = fileManager.getMainFile(vagonNumber);
         JSONParser jsonParser = new JSONParser();
         Object obj = jsonParser.parse(reader);
         JSONArray employeeList = (JSONArray) obj;
@@ -39,7 +43,7 @@ public class JsonIO {
         addVagonObj.put("productDate", addVagon.getProductDate());
 
         JSONArray employeeList = readJsonArray(
-                "src/json/vagons3.json");
+                addVagon.getNumber());
         employeeList.add(addVagonObj);
 
         try (FileWriter file = new FileWriter(
@@ -56,7 +60,7 @@ public class JsonIO {
     @SuppressWarnings("unchecked")
     public static void writeJsonSingle(VagonTime addVagonTime) throws Exception {
         JSONArray numberTimeList = readJsonArray(
-                "src/json/numtime.json");
+                addVagonTime.getNumber());
 
         JSONObject addObj = new JSONObject();
         addObj.put("number", addVagonTime.getNumber());

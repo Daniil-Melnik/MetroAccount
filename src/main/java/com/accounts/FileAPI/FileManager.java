@@ -3,6 +3,7 @@ package com.accounts.FileAPI;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import com.accounts.Enums.MainEnum;
@@ -15,8 +16,11 @@ public class FileManager {
         return fileName;
     }
 
+    @SuppressWarnings("resource")
     private void createFile(String fileName) throws IOException {
         File f = new File(fileName);
+        FileWriter writer = new FileWriter(f);
+        writer.write("[]");
         f.createNewFile();
     }
 
