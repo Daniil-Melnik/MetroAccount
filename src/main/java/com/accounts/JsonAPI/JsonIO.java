@@ -64,11 +64,18 @@ public class JsonIO {
     }
 
     @SuppressWarnings("unchecked")
-    public static void writeJsonSingle(VagonTime addVagonTime) throws Exception {
+    public static void writeJsonSingle(int vagonNumber) throws Exception {
         FileManager fileManager = new FileManager();
-        JSONArray numberTimeList = readJsonArray(
-                addVagonTime.getNumber(), ModeEnum.FILE_IO_VAGON_TIME_MODE.toInt());
 
+        JSONArray numberTimeList = readJsonArray(
+                vagonNumber, ModeEnum.FILE_IO_VAGON_TIME_MODE.toInt());
+
+        for (int i = 0; i < numberTimeList.size(); i++) { // подготовлено к поиску последнего вхождения
+            JSONObject obj = (JSONObject) numberTimeList.get(i);
+            System.out.println(Integer.parseInt(obj.get("number").toString()));
+        }
+
+        VagonTime addVagonTime = new VagonTime(vagonNumber, 1);
         JSONObject addObj = new JSONObject();
         addObj.put("number", addVagonTime.getNumber());
         addObj.put("time", addVagonTime.getTime());
