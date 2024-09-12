@@ -70,12 +70,19 @@ public class JsonIO {
         JSONArray numberTimeList = readJsonArray(
                 vagonNumber, ModeEnum.FILE_IO_VAGON_TIME_MODE.toInt());
 
+        int number; // хорошо бы вынести поиск (именно перебор) в отдельную функцию
+                    // (массив) => колво
+        int time;
+
         for (int i = 0; i < numberTimeList.size(); i++) { // подготовлено к поиску последнего вхождения
             JSONObject obj = (JSONObject) numberTimeList.get(i);
-            System.out.println(Integer.parseInt(obj.get("number").toString()));
+            number = Integer.parseInt(obj.get("number").toString());
+            time = Integer.parseInt(obj.get("time").toString());
+
+            System.out.println(number + " " + time);
         }
 
-        VagonTime addVagonTime = new VagonTime(vagonNumber, 1);
+        VagonTime addVagonTime = new VagonTime(vagonNumber, 1); // вставлять колво вместо 1
         JSONObject addObj = new JSONObject();
         addObj.put("number", addVagonTime.getNumber());
         addObj.put("time", addVagonTime.getTime());
