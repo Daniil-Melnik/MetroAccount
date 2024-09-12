@@ -16,6 +16,7 @@ import com.accounts.Enums.Factories;
 import com.accounts.Enums.LinesTitles;
 import com.accounts.JsonAPI.JsonIO;
 import com.accounts.JsonAPI.Vagon;
+import com.accounts.JsonAPI.VagonTime;
 import com.accounts.components.TimePicker;
 
 import java.awt.event.ActionListener;
@@ -138,11 +139,13 @@ public class AddPanel extends JPanel {
                 addProductDate = productDate.getSelectedItem().toString();
 
                 Vagon addVagon = new Vagon(addNumber, addType, addLine, addDate, addTime, addFactory, addProductDate);
+                VagonTime addVagonTime = new VagonTime(addNumber, 1);
 
                 // addVagon.printVagonInfo();
 
                 try {
                     JsonIO.writeJsonSingle(addVagon);
+                    JsonIO.writeJsonSingle(addVagonTime);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
