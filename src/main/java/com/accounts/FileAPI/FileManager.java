@@ -39,7 +39,9 @@ public class FileManager {
             case 1:
                 fullFilename = MainEnum.MAIN_JSON_PATH + fileName;
                 break;
-
+            case 2:
+                fullFilename = MainEnum.VAGON_TIME_JSON_PATH + fileName;
+                break;
             default:
                 break;
         }
@@ -65,7 +67,9 @@ public class FileManager {
             case 1:
                 fullFilename = MainEnum.MAIN_JSON_PATH + fileName;
                 break;
-
+            case 2:
+                fullFilename = MainEnum.VAGON_TIME_JSON_PATH + fileName;
+                break;
             default:
                 break;
         }

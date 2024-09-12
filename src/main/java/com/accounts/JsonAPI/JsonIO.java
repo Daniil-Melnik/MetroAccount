@@ -15,13 +15,13 @@ import com.accounts.FileAPI.FileManager;
 public class JsonIO {
     public static void main(String[] args) throws Exception {
         JSONArray jsonObject = (JSONArray) readJsonArray(
-                6940);
+                6940, 1);
         System.out.println(jsonObject);
     }
 
-    public static JSONArray readJsonArray(int vagonNumber) {
+    public static JSONArray readJsonArray(int vagonNumber, int mode) {
         FileManager fileManager = new FileManager();
-        try (FileReader reader = fileManager.getFileReader(vagonNumber, ModeEnum.FILE_IO_MAIN_MODE.toInt())) {
+        try (FileReader reader = fileManager.getFileReader(vagonNumber, mode)) {
             JSONParser jsonParser = new JSONParser();
             Object obj = jsonParser.parse(reader);
             JSONArray employeeList = (JSONArray) obj;
@@ -49,7 +49,7 @@ public class JsonIO {
         addVagonObj.put("productDate", addVagon.getProductDate());
 
         JSONArray employeeList = readJsonArray(
-                addVagon.getNumber());
+                addVagon.getNumber(), ModeEnum.FILE_IO_MAIN_MODE.toInt());
         employeeList.add(addVagonObj);
 
         try {
@@ -65,8 +65,9 @@ public class JsonIO {
 
     @SuppressWarnings("unchecked")
     public static void writeJsonSingle(VagonTime addVagonTime) throws Exception {
+        FileManager fileManager = new FileManager();
         JSONArray numberTimeList = readJsonArray(
-                addVagonTime.getNumber());
+                addVagonTime.getNumber(), ModeEnum.FILE_IO_VAGON_TIME_MODE.toInt());
 
         JSONObject addObj = new JSONObject();
         addObj.put("number", addVagonTime.getNumber());
@@ -74,8 +75,8 @@ public class JsonIO {
 
         numberTimeList.add(addObj);
 
-        try (FileWriter file = new FileWriter(
-                "src/json/numtime.json")) {
+        try (FileWriter file = fileManager.getFileWriter(addVagonTime.getNumber(),
+                ModeEnum.FILE_IO_VAGON_TIME_MODE.toInt())) {
             file.write(numberTimeList.toJSONString());
             file.flush();
 

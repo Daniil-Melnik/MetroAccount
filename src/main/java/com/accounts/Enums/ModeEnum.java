@@ -2,7 +2,7 @@ package com.accounts.Enums;
 
 public enum ModeEnum {
     FILE_IO_MAIN_MODE(1),
-    FILE_IO_VAGON_TIME_MODE(1);
+    FILE_IO_VAGON_TIME_MODE(2);
 
     private final int description;
 
