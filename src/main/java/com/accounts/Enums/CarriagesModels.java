@@ -26,6 +26,8 @@ public enum CarriagesModels {
     NOMERNOY6_I("«Номерной» 81-541.5"),
     NOMERNOY7_H("«Номерной» 81-540.7"),
     NOMERNOY7_I("«Номерной» 81-541.7"),
+    NOMERNOY8_H("«Номерной» 81-540.9"),
+    NOMERNOY8_I("«Номерной» 81-541.9"),
     YUBILEYNY1_H("«Юбилейный» 81-722"),
     YUBILEYNY1_IM("«Юбилейный» 81-724"),
     YUBILEYNY1_IT("«Юбилейный» 81-723"),
