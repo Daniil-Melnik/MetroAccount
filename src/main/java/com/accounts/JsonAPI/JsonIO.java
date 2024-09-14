@@ -72,17 +72,20 @@ public class JsonIO {
 
         int number; // хорошо бы вынести поиск (именно перебор) в отдельную функцию
                     // (массив) => колво
-        int time;
+        int time = 0;
+        int cnt = 0;
 
-        for (int i = 0; i < numberTimeList.size(); i++) { // подготовлено к поиску последнего вхождения
-            JSONObject obj = (JSONObject) numberTimeList.get(i);
+        while ((time == 0) && (cnt < numberTimeList.size())){
+            JSONObject obj = (JSONObject) numberTimeList.get(cnt);
             number = Integer.parseInt(obj.get("number").toString());
-            time = Integer.parseInt(obj.get("time").toString());
-
-            System.out.println(number + " " + time);
+            time = (number == vagonNumber) ? Integer.parseInt(obj.get("time").toString()) + 1 : 0;
+            if (number == vagonNumber) System.out.println(time);
+            cnt++;
         }
 
-        VagonTime addVagonTime = new VagonTime(vagonNumber, 1); // вставлять колво вместо 1
+        numberTimeList.removeIf(object -> ((JSONObject) object).get("number").equals(vagonNumber));
+
+        VagonTime addVagonTime = new VagonTime(vagonNumber, time); // вставлять колво вместо 1
         JSONObject addObj = new JSONObject();
         addObj.put("number", addVagonTime.getNumber());
         addObj.put("time", addVagonTime.getTime());
