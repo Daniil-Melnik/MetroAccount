@@ -78,14 +78,14 @@ public class JsonIO {
         while ((time == 0) && (cnt < numberTimeList.size())){
             JSONObject obj = (JSONObject) numberTimeList.get(cnt);
             number = Integer.parseInt(obj.get("number").toString());
-            time = (number == vagonNumber) ? Integer.parseInt(obj.get("time").toString()) + 1 : 0;
+            time = (number == vagonNumber) ? Integer.parseInt(obj.get("time").toString()) : 0;
             if (number == vagonNumber) System.out.println(time);
             cnt++;
         }
 
-        numberTimeList.removeIf(object -> ((JSONObject) object).get("number").equals(vagonNumber));
+        numberTimeList.removeIf(object -> Integer.parseInt(((JSONObject) object).get("number").toString()) == vagonNumber); // !!!
 
-        VagonTime addVagonTime = new VagonTime(vagonNumber, time); // вставлять колво вместо 1
+        VagonTime addVagonTime = new VagonTime(vagonNumber, time + 1); // вставлять колво вместо 1
         JSONObject addObj = new JSONObject();
         addObj.put("number", addVagonTime.getNumber());
         addObj.put("time", addVagonTime.getTime());
