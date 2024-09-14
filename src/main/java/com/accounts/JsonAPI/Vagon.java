@@ -1,7 +1,7 @@
 package com.accounts.JsonAPI;
 
 public class Vagon {
-    private int number;
+    private String number;
     private String type;
     private String line;
     private String date;
@@ -9,7 +9,7 @@ public class Vagon {
     private String factory;
     private String productDate;
 
-    public Vagon(int number, String type, String line, String date, String time, String factory, String productDate) {
+    public Vagon(String number, String type, String line, String date, String time, String factory, String productDate) {
         this.number = number;
         this.type = type;
         this.line = line;
@@ -19,11 +19,11 @@ public class Vagon {
         this.productDate = productDate;
     }
 
-    public void setNumber(int newNumber) {
+    public void setNumber(String newNumber) {
         number = newNumber;
     }
 
-    public void setNumber(String newType) {
+    public void setType(String newType) {
         type = newType;
     }
 
@@ -43,7 +43,7 @@ public class Vagon {
         factory = newFactory;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 

@@ -115,7 +115,7 @@ public class AddPanel extends JPanel {
 
         submit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                int addNumber;
+                String addNumber;
                 String addType;
                 String addLine;
                 String addDate;
@@ -129,7 +129,7 @@ public class AddPanel extends JPanel {
 
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-                addNumber = Integer.parseInt(numberCarriadge.getText());
+                addNumber = numberCarriadge.getText();
                 addType = ct.name().toString();
                 addLine = lt.name().toString();
                 addDate = df.format(datePicker.getDate());

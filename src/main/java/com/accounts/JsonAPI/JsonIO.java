@@ -13,13 +13,13 @@ import com.accounts.Enums.ModeEnum;
 import com.accounts.FileAPI.FileManager;
 
 public class JsonIO {
-    public static void main(String[] args) throws Exception {
-        JSONArray jsonObject = (JSONArray) readJsonArray(
-                6940, 1);
-        System.out.println(jsonObject);
-    }
+    // public static void main(String[] args) throws Exception {
+    //     JSONArray jsonObject = (JSONArray) readJsonArray(
+    //             6940, 1);
+    //     System.out.println(jsonObject);
+    // }
 
-    public static JSONArray readJsonArray(int vagonNumber, int mode) {
+    public static JSONArray readJsonArray(String vagonNumber, int mode) {
         FileManager fileManager = new FileManager();
         try (FileReader reader = fileManager.getFileReader(vagonNumber, mode)) {
             JSONParser jsonParser = new JSONParser();
@@ -64,26 +64,26 @@ public class JsonIO {
     }
 
     @SuppressWarnings("unchecked")
-    public static void writeJsonSingle(int vagonNumber) throws Exception {
+    public static void writeJsonSingle(String vagonNumber) throws Exception {
         FileManager fileManager = new FileManager();
 
         JSONArray numberTimeList = readJsonArray(
                 vagonNumber, ModeEnum.FILE_IO_VAGON_TIME_MODE.toInt());
 
-        int number; // хорошо бы вынести поиск (именно перебор) в отдельную функцию
+        String number; // хорошо бы вынести поиск (именно перебор) в отдельную функцию
                     // (массив) => колво
         int time = 0;
         int cnt = 0;
 
         while ((time == 0) && (cnt < numberTimeList.size())){
             JSONObject obj = (JSONObject) numberTimeList.get(cnt);
-            number = Integer.parseInt(obj.get("number").toString());
-            time = (number == vagonNumber) ? Integer.parseInt(obj.get("time").toString()) : 0;
-            if (number == vagonNumber) System.out.println(time);
+            number = obj.get("number").toString();
+            time = (number.equals(vagonNumber)) ? Integer.parseInt(obj.get("time").toString()) : 0;
+            if (number.equals(vagonNumber)) System.out.println(time);
             cnt++;
         }
 
-        numberTimeList.removeIf(object -> Integer.parseInt(((JSONObject) object).get("number").toString()) == vagonNumber); // !!!
+        numberTimeList.removeIf(object -> ((JSONObject) object).get("number").toString().equals(vagonNumber)); // !!!
 
         VagonTime addVagonTime = new VagonTime(vagonNumber, time + 1); // вставлять колво вместо 1
         JSONObject addObj = new JSONObject();

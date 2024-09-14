@@ -12,9 +12,8 @@ import com.accounts.Enums.MainEnum;
 
 public class FileManager {
 
-    public String makeFileName(int vagonNumber) {
-        String vagonNumberStr = Integer.toString(vagonNumber);
-        String fileName = vagonNumberStr.substring(0, 2) + "xx.json";
+    public String makeFileName(String vagonNumber) {
+        String fileName = vagonNumber.substring(0, 2) + "xx.json";
         return fileName;
     }
 
@@ -30,7 +29,7 @@ public class FileManager {
         }
     }
 
-    public FileReader getFileReader(int vagonNumber, int mode) throws FileNotFoundException {
+    public FileReader getFileReader(String vagonNumber, int mode) throws FileNotFoundException {
         FileReader file;
         String fileName = makeFileName(vagonNumber);
         String fullFilename = "";
@@ -58,7 +57,7 @@ public class FileManager {
         return file;
     }
 
-    public FileWriter getFileWriter(int vagonNumber, int mode) throws IOException {
+    public FileWriter getFileWriter(String vagonNumber, int mode) throws IOException {
         FileWriter file;
         String fileName = makeFileName(vagonNumber);
         String fullFilename = "";

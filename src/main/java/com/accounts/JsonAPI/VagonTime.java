@@ -1,10 +1,10 @@
 package com.accounts.JsonAPI;
 
 public class VagonTime {
-    private int number;
+    private String number;
     private int time;
 
-    public VagonTime(int number, int time) {
+    public VagonTime(String number, int time) {
         this.time = time;
         this.number = number;
     }
@@ -13,7 +13,7 @@ public class VagonTime {
         return time;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 }
