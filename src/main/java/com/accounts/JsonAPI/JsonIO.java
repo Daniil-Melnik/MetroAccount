@@ -63,15 +63,8 @@ public class JsonIO {
 
     }
 
-    @SuppressWarnings("unchecked")
-    public static void writeJsonSingle(String vagonNumber) throws Exception {
-        FileManager fileManager = new FileManager();
-
-        JSONArray numberTimeList = readJsonArray(
-                vagonNumber, ModeEnum.FILE_IO_VAGON_TIME_MODE.toInt());
-
-        String number; // хорошо бы вынести поиск (именно перебор) в отдельную функцию
-                    // (массив) => колво
+    private static int getLastTime(JSONArray numberTimeList, String vagonNumber){
+        String number; 
         int time = 0;
         int cnt = 0;
 
@@ -79,9 +72,21 @@ public class JsonIO {
             JSONObject obj = (JSONObject) numberTimeList.get(cnt);
             number = obj.get("number").toString();
             time = (number.equals(vagonNumber)) ? Integer.parseInt(obj.get("time").toString()) : 0;
-            if (number.equals(vagonNumber)) System.out.println(time);
             cnt++;
         }
+
+        return time;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void writeJsonSingle(String vagonNumber) throws Exception {
+        FileManager fileManager = new FileManager();
+
+        JSONArray numberTimeList = readJsonArray(
+                vagonNumber, ModeEnum.FILE_IO_VAGON_TIME_MODE.toInt());
+
+        int time = getLastTime(numberTimeList, vagonNumber);
+        
 
         numberTimeList.removeIf(object -> ((JSONObject) object).get("number").toString().equals(vagonNumber)); // !!!
 
