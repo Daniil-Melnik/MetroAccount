@@ -10,7 +10,7 @@ public class JsonParser {
 
         String [] vagonFiles = directoryManager.getAllFilesOfDirectory(vagonPaths);
 
-        for (String str : vagonFiles){
+        for (String str : vagonFiles){ // получен список всех файлов, осталось распарсить
             System.out.println(str);
         }
         return null;
