@@ -19,6 +19,10 @@ public class Vagon {
         this.productDate = productDate;
     }
 
+    public void showVagon(){
+        System.out.println(this.getNumber() + " " + this.getDate() + " " + this.getFactory() + " " + this.getLine() + " " + this.getType());
+    }
+
     public void setNumber(String newNumber) {
         number = newNumber;
     }
