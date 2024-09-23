@@ -14,7 +14,7 @@ public class ListPanel extends JPanel{
 
     public ListPanel(){
         setLayout(null);
-        setSize(480, 280);
+        setSize(730, 280);
 
         String[] columnNames = { "1", "2", "3", "4", "5", "7", "8" };
 
@@ -32,7 +32,7 @@ public class ListPanel extends JPanel{
 
         titleLable.setFont(font15);
         
-        scrollPane.setBounds(0, 25, 468, 250);
+        scrollPane.setBounds(0, 25, 718, 250);
         titleLable.setBounds(170, 5, 150, 20);
 
         add(scrollPane); 

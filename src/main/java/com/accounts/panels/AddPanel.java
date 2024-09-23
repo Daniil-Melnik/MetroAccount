@@ -46,7 +46,7 @@ public class AddPanel extends JPanel {
 
     public AddPanel() {
         setLayout(null);
-        setSize(400, 320);
+        setSize(730, 320);
 
         makeOptions();
 
