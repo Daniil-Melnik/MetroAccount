@@ -1,5 +1,9 @@
 package com.accounts.JsonAPI;
 
+import com.accounts.Enums.CarriagesModels;
+import com.accounts.Enums.Factories;
+import com.accounts.Enums.LinesTitles;
+
 public class Vagon {
     private String number;
     private String type;
@@ -26,11 +30,11 @@ public class Vagon {
     public String [] toStringArray(){
         String [] res = new String [7];
         res[0] = this.number;
-        res[1] = this.type;
-        res[4] = this.line;
+        res[1] = CarriagesModels.valueOf(this.type).toString();
+        res[4] = LinesTitles.valueOf(this.line).toString();
         res[5] = this.date;
         res[6] = this.time;
-        res[2] = this.factory;
+        res[2] = Factories.valueOf(this.factory).toString();
         res[3] = this.productDate;
 
         return res;
