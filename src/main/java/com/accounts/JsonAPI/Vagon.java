@@ -23,6 +23,20 @@ public class Vagon {
         System.out.println(this.getNumber() + " " + this.getDate() + " " + this.getFactory() + " " + this.getLine() + " " + this.getType());
     }
 
+    public String [] toStringArray(){
+        String [] res = new String [7];
+        res[0] = this.number;
+        res[1] = this.type;
+        res[2] = this.line;
+        res[3] = this.line;
+        res[4] = this.date;
+        res[5] = this.time;
+        res[6] = this.factory;
+        res[7] = this.productDate;
+
+        return res;
+    }
+
     public void setNumber(String newNumber) {
         number = newNumber;
     }
