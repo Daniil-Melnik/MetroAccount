@@ -23,7 +23,7 @@ public class ListPanel extends JPanel{
 
         JsonParser jsonParser = new JsonParser();
 
-        String[] columnNames = { "Номер", "Тип", "Завод", "Год выпуска", "Линия", "Дата", "Время" };
+        String[] columnNames = { "Номер", "Тип", "Завод", "г. вып.", "Линия", "Дата", "Время" };
 
         String[][] data;
 
@@ -31,6 +31,13 @@ public class ListPanel extends JPanel{
             data = jsonParser.getAllVagonsString();
             DefaultTableModel model = new DefaultTableModel(data, columnNames);
             JTable table = new JTable(model);
+            table.getColumnModel().getColumn(0).setPreferredWidth(20);
+            table.getColumnModel().getColumn(1).setPreferredWidth(150);
+            table.getColumnModel().getColumn(2).setPreferredWidth(200);
+            table.getColumnModel().getColumn(3).setPreferredWidth(20);
+            table.getColumnModel().getColumn(4).setPreferredWidth(150);
+            table.getColumnModel().getColumn(5).setPreferredWidth(40);
+            table.getColumnModel().getColumn(6).setPreferredWidth(15);
             JScrollPane scrollPane = new JScrollPane(table);
             scrollPane.setBounds(0, 25, 718, 250);
             add(scrollPane);
