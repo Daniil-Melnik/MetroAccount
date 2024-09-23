@@ -24,15 +24,14 @@ public class Vagon {
     }
 
     public String [] toStringArray(){
-        String [] res = new String [8];
+        String [] res = new String [7];
         res[0] = this.number;
         res[1] = this.type;
-        res[2] = this.line;
-        res[3] = this.line;
-        res[4] = this.date;
-        res[5] = this.time;
-        res[6] = this.factory;
-        res[7] = this.productDate;
+        res[4] = this.line;
+        res[5] = this.date;
+        res[6] = this.time;
+        res[2] = this.factory;
+        res[3] = this.productDate;
 
         return res;
     }

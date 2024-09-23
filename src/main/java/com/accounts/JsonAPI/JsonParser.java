@@ -37,6 +37,15 @@ public class JsonParser {
         }
         return TT.toVagonArray(preRes);
     }
+
+    public String [][] getAllVagonsString() throws ParseException, IOException{ // временная вариация, позже переделать под номерные списки
+        Vagon [] vagons = this.getAllVagons();
+        String [][] res = new String[vagons.length][7];
+        for (int i = 0; i < vagons.length; i++){
+            res[i] = vagons[i].toStringArray();
+        }
+        return res;
+    }
     
     public static void main (String [] args) throws ParseException, IOException{
         JsonParser jsonParser = new JsonParser();
