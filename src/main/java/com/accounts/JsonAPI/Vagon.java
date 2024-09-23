@@ -24,7 +24,7 @@ public class Vagon {
     }
 
     public String [] toStringArray(){
-        String [] res = new String [7];
+        String [] res = new String [8];
         res[0] = this.number;
         res[1] = this.type;
         res[2] = this.line;

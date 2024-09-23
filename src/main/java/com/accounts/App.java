@@ -28,7 +28,7 @@ public class App extends JFrame {
 
         buttonPanel.setBounds(0, 5, 400, 20);
         addPanel.setBounds(0, 25, 480, 320);
-        listPanel.setBounds(0, 25, 400, 320);
+        listPanel.setBounds(0, 25, 480, 320);
 
         buttonPanel.addCarriageButtonListener(new ActionListener() {
             @Override
