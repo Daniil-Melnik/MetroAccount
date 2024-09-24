@@ -28,7 +28,7 @@ public class JsonParser {
         DirectoryManager directoryManager = new DirectoryManager();
         String[] vagonFiles = directoryManager.getAllFilesOfDirectory(vagonPaths);
 
-        for (String str : vagonFiles) { // вывод всех вагонов
+        for (String str : vagonFiles) { // вывод всех вагонов // переделать на JsonIO.getFileReader()
             file = new FileReader(str);
             obj = jsonParser.parse(file);
             employeeList = (JSONArray) obj;
