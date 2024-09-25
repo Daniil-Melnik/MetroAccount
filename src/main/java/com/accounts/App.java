@@ -16,7 +16,7 @@ public class App extends JFrame {
     private ListPanel listPanel;
 
     public App() {
-
+ 
         setLayout(null);
         setTitle("Управление поездами");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
