@@ -14,6 +14,7 @@ import com.accounts.FileAPI.DirectoryManager;
 import com.accounts.FileAPI.FileManager;
 
 public class JsonParser {
+
     public Vagon[] getAllVagons() throws ParseException, IOException {
         ArrayList<Vagon> preRes = new ArrayList<>();
         FileReader file;

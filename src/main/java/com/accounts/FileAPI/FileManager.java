@@ -41,15 +41,19 @@ public class FileManager {
             case 2:
                 fullFilename = MainEnum.VAGON_TIME_JSON_PATH + fileName;
                 break;
+
+            case 3:
+                fullFilename = MainEnum.HEAD_JSON_PATH.toString();
             default:
                 break;
         }
-
-        try {
-            createFile(fullFilename);
-        } catch (IOException e) {
-            // добавить логи
-            System.out.println("Не заполнился файл");
+        if (mode == 1 || mode == 2) {
+            try {
+                createFile(fullFilename);
+            } catch (IOException e) {
+                // добавить логи
+                System.out.println("Не заполнился файл");
+            }
         }
 
         file = new FileReader(fullFilename);
