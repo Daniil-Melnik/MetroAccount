@@ -35,4 +35,14 @@ public class Typetransfer {
         }
         return resArr;
     }
+
+    @SuppressWarnings("unchecked")
+    public JSONArray toJSONArray(ArrayList<String> arr) {
+        JSONArray res = new JSONArray();
+        for (int i = 0; i < arr.size(); i++) {
+            Object objToAdd = (Object) arr.get(i);
+            res.add(objToAdd);
+        }
+        return res;
+    }
 }

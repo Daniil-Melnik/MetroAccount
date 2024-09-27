@@ -9,13 +9,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.accounts.Enums.MainEnum;
 import com.accounts.Enums.ModeEnum;
 import com.accounts.FileAPI.FileManager;
 
 public class JsonIO {
     public static void main(String[] args) throws Exception {
-        JsonIO jsIO = new JsonIO();
-        jsIO.updateHead("1234");
+        JsonIO.updateHead("0000");
     }
 
     public static JSONArray readJsonArray(String vagonNumber, int mode) {
@@ -48,12 +48,36 @@ public class JsonIO {
         }
     }
 
-    private void updateHead(String vagonNumber) {
+    private static boolean isInList(String numberXX, JSONArray arr) {
+        boolean res = true;
+        int i = 0;
+        while (res && i < arr.size()) {
+            if (arr.get(i).toString().equals(numberXX)) {
+                res = false;
+            }
+            i++;
+        }
+        return res;
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void updateHead(String vagonNumber) {
         JSONObject headFile = readJsonHead();
         System.out.println(headFile);
         JSONArray numbers = (JSONArray) headFile.get("numbers");
-        for (int i = 0; i < numbers.size(); i++) {
-            System.out.print(numbers.get(i) + " ");
+        String numberXX = vagonNumber.substring(0, 2) + "xx";
+        if (isInList(numberXX, numbers)) {
+            numbers.add(numberXX);
+        }
+        headFile.put("numbers", numbers);
+
+        try (FileWriter file = new FileWriter(MainEnum.HEAD_JSON_PATH + "app-head.json")) { // заменить на что-то
+                                                                                            // нормальное
+            file.write(headFile.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -79,6 +103,7 @@ public class JsonIO {
             FileWriter writer = fileManager.getFileWriter(addVagon.getNumber(), ModeEnum.FILE_IO_MAIN_MODE.toInt());
             writer.write(employeeList.toJSONString());
             writer.flush();
+            updateHead(addVagon.getNumber());
         } catch (Exception e) {
             // что-то в логи
             System.out.println("Не удалось записать в файл");
