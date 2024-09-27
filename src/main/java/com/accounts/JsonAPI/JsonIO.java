@@ -48,6 +48,13 @@ public class JsonIO {
         }
     }
 
+    public String[] getHeadFileNumbersString() {
+        Typetransfer TT = new Typetransfer();
+        JSONObject obj = readJsonHead();
+        JSONArray numbers = (JSONArray) obj.get("numbers");
+        return TT.toStringArray(numbers);
+    }
+
     private static boolean isInList(String numberXX, JSONArray arr) {
         boolean res = true;
         int i = 0;

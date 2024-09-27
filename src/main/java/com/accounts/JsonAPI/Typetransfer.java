@@ -28,6 +28,14 @@ public class Typetransfer {
         return res;
     }
 
+    public String[] toStringArray(JSONArray jsArr) {
+        String[] res = new String[jsArr.size()];
+        for (int i = 0; i < jsArr.size(); i++) {
+            res[i] = jsArr.get(i).toString();
+        }
+        return res;
+    }
+
     public ArrayList<String> toArrayList(JSONArray jsonArr) {
         ArrayList<String> resArr = new ArrayList<>();
         for (int i = 0; i < jsonArr.size(); i++) {
