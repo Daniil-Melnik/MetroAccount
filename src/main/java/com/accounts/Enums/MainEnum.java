@@ -4,7 +4,7 @@ public enum MainEnum {
 
     MAIN_JSON_PATH("src/json/main_info/"),
     VAGON_TIME_JSON_PATH("src/json/time_info/"),
-    HEAD_JSON_PATH("src/json/app-head.json");
+    HEAD_JSON_PATH("src/json/");
 
     private final String description;
 

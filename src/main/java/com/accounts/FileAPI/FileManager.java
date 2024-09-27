@@ -31,8 +31,20 @@ public class FileManager {
 
     public FileReader getFileReader(String vagonNumber, int mode) throws FileNotFoundException {
         FileReader file;
-        String fileName = makeFileName(vagonNumber);
+        String fileName = "";
         String fullFilename = "";
+
+        switch (mode) {
+            case 1:
+            case 2:
+                fileName = makeFileName(vagonNumber);
+                break;
+            case 3:
+                fileName = "app-head.json";
+                break;
+            default:
+                break;
+        }
 
         switch (mode) {
             case 1:
@@ -43,10 +55,11 @@ public class FileManager {
                 break;
 
             case 3:
-                fullFilename = MainEnum.HEAD_JSON_PATH.toString();
+                fullFilename = MainEnum.HEAD_JSON_PATH + fileName;
             default:
                 break;
         }
+
         if (mode == 1 || mode == 2) {
             try {
                 createFile(fullFilename);

@@ -1,6 +1,5 @@
 package com.accounts.JsonAPI;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,11 +13,10 @@ import com.accounts.Enums.ModeEnum;
 import com.accounts.FileAPI.FileManager;
 
 public class JsonIO {
-    // public static void main(String[] args) throws Exception {
-    // JSONArray jsonObject = (JSONArray) readJsonArray(
-    // 6940, 1);
-    // System.out.println(jsonObject);
-    // }
+    public static void main(String[] args) throws Exception {
+        JsonIO jsIO = new JsonIO();
+        jsIO.updateHead("1234");
+    }
 
     public static JSONArray readJsonArray(String vagonNumber, int mode) {
         FileManager fileManager = new FileManager();
@@ -35,14 +33,27 @@ public class JsonIO {
         }
     }
 
-    private void updateHead(String vagonNumber) {
+    public static JSONObject readJsonHead() {
         FileManager fileManager = new FileManager();
-        try {
-            FileReader file = fileManager.getFileReader("", 3);
-        } catch (FileNotFoundException e) {
-            // добавить логи
+        try (FileReader reader = fileManager.getFileReader("", 3)) {
+            JSONParser jsonParser = new JSONParser();
+            Object obj = jsonParser.parse(reader);
+            JSONObject employeeObject = (JSONObject) obj;
+
+            return employeeObject;
+        } catch (IOException | ParseException e) {
+            // что-то в логи
             System.out.println("Не удалось прочитать головной файл");
-            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private void updateHead(String vagonNumber) {
+        JSONObject headFile = readJsonHead();
+        System.out.println(headFile);
+        JSONArray numbers = (JSONArray) headFile.get("numbers");
+        for (int i = 0; i < numbers.size(); i++) {
+            System.out.print(numbers.get(i) + " ");
         }
     }
 
