@@ -1,6 +1,6 @@
 package com.accounts;
 
-import javax.swing.JFrame;
+import javax.swing.JFrame;  
 
 import com.accounts.panels.AddPanel;
 import com.accounts.panels.HeadMenu;
