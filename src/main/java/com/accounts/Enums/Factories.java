@@ -4,7 +4,8 @@ public enum Factories {
     LVZ("ЛВЗ им. И. Е. Егорова"),
     VAGONMASH("Вагонмаш"),
     OERVZ("ОЭВРЗ"),
-    MVM("Метровагонмаш");
+    MVM("Метровагонмаш"),
+    KIROV("Кировский завод");
 
     private final String description;
 
