@@ -1,5 +1,9 @@
 package com.accounts.JsonAPI;
 
+import com.accounts.Enums.CarriagesModels;
+import com.accounts.Enums.Factories;
+import com.accounts.Enums.LinesTitles;
+
 public class Vagon {
     private String number;
     private String type;
@@ -17,6 +21,23 @@ public class Vagon {
         this.time = time;
         this.factory = factory;
         this.productDate = productDate;
+    }
+
+    public void showVagon(){
+        System.out.println(this.getNumber() + " " + this.getDate() + " " + this.getFactory() + " " + this.getLine() + " " + this.getType());
+    }
+
+    public String [] toStringArray(){
+        String [] res = new String [7];
+        res[0] = this.number;
+        res[1] = CarriagesModels.valueOf(this.type).toString();
+        res[4] = LinesTitles.valueOf(this.line).toString();
+        res[5] = this.date;
+        res[6] = this.time;
+        res[2] = Factories.valueOf(this.factory).toString();
+        res[3] = this.productDate;
+
+        return res;
     }
 
     public void setNumber(String newNumber) {

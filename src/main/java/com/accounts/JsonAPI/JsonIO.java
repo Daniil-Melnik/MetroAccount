@@ -9,15 +9,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.accounts.Enums.MainEnum;
 import com.accounts.Enums.ModeEnum;
 import com.accounts.FileAPI.FileManager;
 
 public class JsonIO {
-    // public static void main(String[] args) throws Exception {
-    //     JSONArray jsonObject = (JSONArray) readJsonArray(
-    //             6940, 1);
-    //     System.out.println(jsonObject);
-    // }
+    public static void main(String[] args) throws Exception {
+        JsonIO.updateHead("0000");
+    }
 
     public static JSONArray readJsonArray(String vagonNumber, int mode) {
         FileManager fileManager = new FileManager();
@@ -31,6 +30,61 @@ public class JsonIO {
             // что-то в логи
             System.out.println("Не удалось прочитать файл");
             return null;
+        }
+    }
+
+    public static JSONObject readJsonHead() {
+        FileManager fileManager = new FileManager();
+        try (FileReader reader = fileManager.getFileReader("", 3)) {
+            JSONParser jsonParser = new JSONParser();
+            Object obj = jsonParser.parse(reader);
+            JSONObject employeeObject = (JSONObject) obj;
+
+            return employeeObject;
+        } catch (IOException | ParseException e) {
+            // что-то в логи
+            System.out.println("Не удалось прочитать головной файл");
+            return null;
+        }
+    }
+
+    public String[] getHeadFileNumbersString() {
+        Typetransfer TT = new Typetransfer();
+        JSONObject obj = readJsonHead();
+        JSONArray numbers = (JSONArray) obj.get("numbers");
+        return TT.toStringArray(numbers);
+    }
+
+    private static boolean isInList(String numberXX, JSONArray arr) {
+        boolean res = true;
+        int i = 0;
+        while (res && i < arr.size()) {
+            if (arr.get(i).toString().equals(numberXX)) {
+                res = false;
+            }
+            i++;
+        }
+        return res;
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void updateHead(String vagonNumber) {
+        JSONObject headFile = readJsonHead();
+        System.out.println(headFile);
+        JSONArray numbers = (JSONArray) headFile.get("numbers");
+        String numberXX = vagonNumber.substring(0, 2) + "xx";
+        if (isInList(numberXX, numbers)) {
+            numbers.add(numberXX);
+        }
+        headFile.put("numbers", numbers);
+
+        try (FileWriter file = new FileWriter(MainEnum.HEAD_JSON_PATH + "app-head.json")) { // заменить на что-то
+                                                                                            // нормальное
+            file.write(headFile.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -56,6 +110,7 @@ public class JsonIO {
             FileWriter writer = fileManager.getFileWriter(addVagon.getNumber(), ModeEnum.FILE_IO_MAIN_MODE.toInt());
             writer.write(employeeList.toJSONString());
             writer.flush();
+            updateHead(addVagon.getNumber());
         } catch (Exception e) {
             // что-то в логи
             System.out.println("Не удалось записать в файл");
@@ -63,12 +118,12 @@ public class JsonIO {
 
     }
 
-    private static int getLastTime(JSONArray numberTimeList, String vagonNumber){
-        String number; 
+    private static int getLastTime(JSONArray numberTimeList, String vagonNumber) {
+        String number;
         int time = 0;
         int cnt = 0;
 
-        while ((time == 0) && (cnt < numberTimeList.size())){
+        while ((time == 0) && (cnt < numberTimeList.size())) {
             JSONObject obj = (JSONObject) numberTimeList.get(cnt);
             number = obj.get("number").toString();
             time = (number.equals(vagonNumber)) ? Integer.parseInt(obj.get("time").toString()) : 0;
@@ -86,7 +141,6 @@ public class JsonIO {
                 vagonNumber, ModeEnum.FILE_IO_VAGON_TIME_MODE.toInt());
 
         int time = getLastTime(numberTimeList, vagonNumber);
-        
 
         numberTimeList.removeIf(object -> ((JSONObject) object).get("number").toString().equals(vagonNumber)); // !!!
 
@@ -103,7 +157,7 @@ public class JsonIO {
             file.flush();
 
         } catch (IOException e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
     }
 
