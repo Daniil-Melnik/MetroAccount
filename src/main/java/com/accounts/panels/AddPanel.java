@@ -6,6 +6,7 @@ import java.util.Calendar;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -143,11 +144,19 @@ public class AddPanel extends JPanel {
                 try {
                     JsonIO.writeJsonSingle(addVagon);
                     JsonIO.writeJsonSingle(addVagon.getNumber());
+                    JOptionPane.showMessageDialog(null, "Вагон успешно добавлен");
+                    resetForm();
                 } catch (Exception e) {
                     e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "При добавлении вагона вознкла ошибка");
                 }
             }
         });
+    }
+
+    private void resetForm(){
+        numberCarriadge.setText("");
+        repaint();
     }
 
     private void makeOptions() {
