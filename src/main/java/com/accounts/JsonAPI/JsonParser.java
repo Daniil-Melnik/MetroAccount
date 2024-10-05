@@ -9,39 +9,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.accounts.Enums.ModeEnum;
 import com.accounts.FileAPI.FileManager;
 
 public class JsonParser {
 
     public Vagon[] getAllVagons() throws ParseException, IOException {
-        ArrayList<Vagon> preRes = new ArrayList<>();
-        FileReader file;
-        FileManager fileManager = new FileManager();
-        Object obj;
-        JSONArray employeeList;
+        Vagon [] res = {};
         JsonIO jsonIO = new JsonIO();
-        int i;
         Typetransfer TT = new Typetransfer();
-        JSONParser jsonParser = new JSONParser();
         String[] numbers = jsonIO.getHeadFileNumbersString();
 
-        // System.out.println(numbers);
-
-        for (String str : numbers) { // вывод всех вагонов // рассмотреть интеграцию пофайлового чтения
-            // ------------------------------------
-            file = fileManager.getFileReader(str, ModeEnum.FILE_IO_MAIN_MODE.toInt());
-            obj = jsonParser.parse(file);
-            employeeList = (JSONArray) obj;
-            for (i = 0; i < employeeList.size(); i++) {
-                JSONObject vagon = (JSONObject) employeeList.get(i);
-                preRes.add(TT.toVagon(vagon));
-            }
-            // хорошо бы чтобы это была отдельная функция как следующая
-            // в которой собирались бы все массивы в одну кучку
-            // -------------------------------------
+        for (String str : numbers) {
+            Vagon [] addArr = getVagonsOfFile(str);
+            res = TT.concatVagonArr(res, addArr);
         }
-        return TT.toVagonArray(preRes);
+        return res;
     }
 
     public Vagon[] getVagonsOfFile(String vagonNumber) throws IOException, ParseException { // вывод вагонов конкретного

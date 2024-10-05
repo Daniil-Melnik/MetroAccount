@@ -44,6 +44,20 @@ public class Typetransfer {
         return resArr;
     }
 
+    public Vagon [] concatVagonArr(Vagon arr1[], Vagon arr2[]){
+        Vagon [] res = new Vagon[arr1.length + arr2.length];
+        int cnt = 0;
+        for (int i = 0; i < arr1.length; i++){
+            res[cnt] = arr1[i];
+            cnt++;
+        }
+        for (int i = 0; i < arr2.length; i++){
+            res[cnt] = arr2[i];
+            cnt++;
+        }
+        return res;
+    }
+
     @SuppressWarnings("unchecked")
     public JSONArray toJSONArray(ArrayList<String> arr) {
         JSONArray res = new JSONArray();
