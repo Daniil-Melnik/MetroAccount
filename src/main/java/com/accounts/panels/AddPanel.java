@@ -144,7 +144,7 @@ public class AddPanel extends JPanel {
                 try {
                     JsonIO.writeJsonSingle(addVagon);
                     JsonIO.writeJsonSingle(addVagon.getNumber());
-                    JOptionPane.showMessageDialog(null, "Вагон успешно добавлен");
+                    JOptionPane.showMessageDialog(null, "Вагон " + addVagon.getNumber() + " успешно добавлен");
                     resetForm();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -154,7 +154,7 @@ public class AddPanel extends JPanel {
         });
     }
 
-    private void resetForm(){
+    private void resetForm() {
         numberCarriadge.setText("");
         repaint();
     }
