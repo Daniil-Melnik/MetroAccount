@@ -9,8 +9,9 @@ public class HeadMenu extends JPanel {
 
     private JButton addCarriageButton;
     private JButton listCarriagesButton;
+    private JButton filterCarriagesButton;
 
-    public HeadMenu(){
+    public HeadMenu() {
         setLayout(null);
 
         setSize(650, 20);
@@ -21,8 +22,12 @@ public class HeadMenu extends JPanel {
         listCarriagesButton = new JButton("Список");
         listCarriagesButton.setBounds(110, 0, 110, 20);
 
+        filterCarriagesButton = new JButton("Фильтр");
+        filterCarriagesButton.setBounds(220, 0, 110, 20);
+
         add(addCarriageButton);
         add(listCarriagesButton);
+        add(filterCarriagesButton);
 
     }
 
@@ -32,5 +37,9 @@ public class HeadMenu extends JPanel {
 
     public void listCarriagesButtonListener(ActionListener listener) {
         listCarriagesButton.addActionListener(listener);
+    }
+
+    public void filterCarriagesButtonListener(ActionListener listener) {
+        filterCarriagesButton.addActionListener(listener);
     }
 }

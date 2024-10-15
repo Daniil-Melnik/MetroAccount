@@ -17,26 +17,27 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
 
-public class ListPanel extends JPanel{
+public class ListPanel extends JPanel {
 
     private JLabel titleLable;
     private JComboBox<String> fileNameCombo;
-    private String [][] data;
+    private String[][] data;
     private JTable table;
     private JScrollPane scrollPane;
     private String[] columnNames = { "Номер", "Тип", "Завод", "Год вып.", "Линия", "Дата", "Время" };
     DefaultTableModel model;
 
-    public ListPanel(){
+    public ListPanel() {
         setLayout(null);
-        setSize(730, 280);        
+        setSize(730, 280);
 
-        String [] comboData = makeComboFileNames();
-        titleLable = new JLabel("Список Вагонов");
+        String[] comboData = makeComboFileNames();
+        titleLable = new JLabel("Список поездок");
         fileNameCombo = new JComboBox<>(comboData);
 
         fileNameCombo.addItemListener(new ItemListener() {
-            @Override public void itemStateChanged(ItemEvent e) {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
                 fileNameComboListener();
             }
         });
@@ -58,7 +59,7 @@ public class ListPanel extends JPanel{
         Font font15 = new Font("Arial", Font.BOLD, 15);
 
         titleLable.setFont(font15);
-        
+
         titleLable.setBounds(170, 5, 150, 20);
         fileNameCombo.setBounds(330, 5, 60, 20);
 
@@ -66,13 +67,13 @@ public class ListPanel extends JPanel{
         add(fileNameCombo);
     }
 
-    private String [] makeComboFileNames(){
+    private String[] makeComboFileNames() {
         JsonIO jsonIO = new JsonIO();
 
-        String [] fileNumberNames = jsonIO.getHeadFileNumbersString();
-        String [] addAll = {"..."};
+        String[] fileNumberNames = jsonIO.getHeadFileNumbersString();
+        String[] addAll = { "..." };
 
-        String [] comboData = new String[1 + fileNumberNames.length];
+        String[] comboData = new String[1 + fileNumberNames.length];
 
         System.arraycopy(addAll, 0, comboData, 0, addAll.length);
         System.arraycopy(fileNumberNames, 0, comboData, addAll.length, fileNumberNames.length);
@@ -80,21 +81,20 @@ public class ListPanel extends JPanel{
         return comboData;
     }
 
-    private String [][] getVagonsForTable() throws IOException, ParseException{
+    private String[][] getVagonsForTable() throws IOException, ParseException {
         JsonParser jsonParser = new JsonParser();
-        String [][] dataM;
+        String[][] dataM;
         String comboValue = fileNameCombo.getSelectedItem().toString();
         System.out.println(comboValue);
-        if (comboValue.equals("...")){
+        if (comboValue.equals("...")) {
             dataM = jsonParser.getAllVagonsString();
-        }
-        else {
+        } else {
             dataM = jsonParser.getVagonsOfFileString(comboValue);
         }
         return dataM;
     }
 
-    private void setColumnWidths(){
+    private void setColumnWidths() {
         table.getColumnModel().getColumn(0).setPreferredWidth(20);
         table.getColumnModel().getColumn(1).setPreferredWidth(100);
         table.getColumnModel().getColumn(2).setPreferredWidth(100);
@@ -104,7 +104,7 @@ public class ListPanel extends JPanel{
         table.getColumnModel().getColumn(6).setPreferredWidth(15);
     }
 
-    private void fileNameComboListener(){
+    private void fileNameComboListener() {
         try {
             data = getVagonsForTable();
             model.setDataVector(data, columnNames);
