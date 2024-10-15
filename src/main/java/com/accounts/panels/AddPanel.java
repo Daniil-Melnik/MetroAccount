@@ -68,7 +68,7 @@ public class AddPanel extends JPanel {
 
         submit = new JButton("Добавить");
 
-        titleLable = new JLabel("Добавить вагон");
+        titleLable = new JLabel("Добавить поездку");
         titleLable.setFont(font15);
 
         dateLabel = new JLabel("Дата поездки:");
