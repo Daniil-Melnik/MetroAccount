@@ -1,9 +1,9 @@
 package com.accounts.Enums;
 
 public enum CarriagesModels {
-    BALTIETS1_F("«Балтиец» 81-725"),
+    /*BALTIETS1_F("«Балтиец» 81-725"),
     BALTIETS1_I1("«Балтиец» 81-726"),
-    BALTIETS1_I2("«Балтиец» 81-727"),
+    BALTIETS1_I2("«Балтиец» 81-727"),*/
     BALTIETS2_H("«Балтиец» 81-725.1"),
     BALTIETS2_I1("«Балтиец» 81-726.1"),
     BALTIETS2_I2("«Балтиец» 81-727.1"),
